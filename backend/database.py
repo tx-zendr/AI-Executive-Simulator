@@ -266,15 +266,7 @@ def get_simulation_history(thread_id: str) -> Optional[Dict[str, Any]]:
                 Customer=individual_scores.get("Customer", 50),
                 Competitor=individual_scores.get("Competitor", 50)
             )
-            cur.execute("""
-                SELECT Thread_name
-                FROM Thread_Name
-                WHERE Thread_id = %s;
-            """, (thread_id,))
-
-            idea_name = cur.fetchone()
-            
-
+           
             decision_data = DecisionResponse(
                 overall_decision=decision_row.get("overall_decision") or "Revise",
                 executive_feedback=decision_row.get("executive_feedback") or "",
@@ -282,8 +274,7 @@ def get_simulation_history(thread_id: str) -> Optional[Dict[str, Any]]:
                 key_risks=[kr.strip() for kr in decision_row["key_risks"].split("|")] if decision_row.get("key_risks") else [],
                 recommended_improvements=[ri.strip() for kr in [decision_row.get("recommend_improvement")] for ri in kr.split("|") if kr] if decision_row.get("recommend_improvement") else [],
                 confidence_score=int(decision_row.get("confidence_score") or 50),
-                individual_scores=scores_model,
-                Idea_name=idea_name
+                individual_scores=scores_model
             )
 
             return {
