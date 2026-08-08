@@ -23,7 +23,7 @@ const About = () => {
             <div className="extr">
                 <div className="gitLink">
                     <div className="gitRef">Github:</div>
-                    <div className="githubLink">github.com/xyz</div>
+                    <div className="githubLink">https://github.com/tx-zendr/AI-Executive-Simulator</div>
                 </div>
             </div>
         </div>
