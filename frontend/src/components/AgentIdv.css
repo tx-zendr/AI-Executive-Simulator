@@ -1,0 +1,71 @@
+.mainAgIdv {
+    background-color: var(--glass-bg3);
+    border-radius: 8px;
+    padding: 10px;
+    font-size: 24px;
+    display: flex;
+    justify-content: center;
+    height: 100%;
+    width: 100%;
+    min-height: 0; 
+    overflow: hidden; 
+}
+
+.placeholderAg{
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    width: 100%;
+}
+
+.topBar{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 17%;
+    width: 100%;
+    background-color: var(--accent-primary);
+    gap: 3.5rem;
+}
+
+.leftSide{
+    width: 30%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.rightSide{
+    flex: 1;
+    display: flex;
+    align-items: center;
+}
+
+.iconSpace{
+    height: 60px;
+    width: 60px;
+    border-radius: 50%;
+    background-size: contain;
+    background-position: center;
+}
+
+.personalityText {
+    flex: 1;
+    padding: 5px;
+    font-size: 18px;
+    line-height: 1.4;
+    overflow-y: auto; 
+    scrollbar-width: none; 
+}
+
+.personalityText::-webkit-scrollbar {
+    display: none;
+}
+
+.scoreBadge {
+    font-size: 16px;
+    font-weight: 900;
+    color: var(--accent-secondary);
+    text-shadow: 0 0 10px var(--accent-secondary);
+    border-radius: 4px;
+}

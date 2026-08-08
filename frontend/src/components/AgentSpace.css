@@ -1,0 +1,9 @@
+.mainAgSp > div{
+    border: 1px solid var(--hypr-inactive);
+    transition: border-color 0.15s ease-in-out;
+}
+
+.mainAgSp > div:hover{
+    border: 1px solid #b2b2fe;
+    background-color: var(--glass-bg4);
+}

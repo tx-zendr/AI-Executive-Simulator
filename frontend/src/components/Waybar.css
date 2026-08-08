@@ -1,0 +1,75 @@
+.mainBar{
+    background-color: var(--glass-bg);
+    display: flex;
+    align-items: center;
+    font-family: var(--font-main);
+    font-size: 18px;
+    height: 50px;
+    width : 100%;
+    font-weight: bold;
+    padding: 20px;
+    border-bottom: 1px solid var(--glass-border);
+}
+.modulesLeft, .modulesCentre, .modulesRight{
+    flex: 1;
+    display: flex;
+}
+
+.modulesLeft{
+    justify-content: flex-start;
+    gap : 3rem
+}
+
+.modulesCentre{
+    justify-content: center;
+}
+
+.modulesRight{
+    justify-content: flex-end;
+}
+
+.sessionStatus{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap : 10px;
+}
+
+.orb{
+    height : 10px;
+    width : 10px;
+    border-radius: 50%;
+    background-color: var(--accent-secondary);
+    margin-top: 2px;
+    box-shadow: 0 0 10px var(--accent-secondary);
+}
+
+.workspaceId{
+    display: flex;
+    gap: 1.5rem;
+    justify-content: center;
+    align-items: center;
+}
+
+.workspaceId > div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 20px;
+    width: 20px;
+    background-color: rgba(255, 255, 255, 0.719);
+    color: var(--bg-dark);
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.workspaceId > div:hover {
+    background-color: white;
+}
+
+.workspaceId > div.active-ws {
+    background-color: white; 
+    box-shadow: 0 0 10px var(--accent-secondary);
+    width : 60px;
+}

@@ -1,0 +1,15 @@
+.mainAbt{
+    display: flex;
+    flex-direction: column;
+    gap: 4rem;
+}
+
+.headerMembers, .extrTitle, .information {
+    font-size: 48px;
+    font-weight: bolder;
+}
+
+.gitLink{
+    display: flex;
+    gap: 2rem;
+}

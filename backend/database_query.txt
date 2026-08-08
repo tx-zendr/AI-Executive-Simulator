@@ -1,0 +1,86 @@
+-- Create Main Database
+CREATE DATABASE AI_Decision_System;
+
+-- Connect to the database
+\c AI_Decision_System;
+
+
+----------------------------------------------------
+-- USER TABLE
+----------------------------------------------------
+
+CREATE TABLE User_Data (
+    UID SERIAL PRIMARY KEY,
+    Thread_id UUID UNIQUE NOT NULL,
+    Images TEXT,
+    Ideas TEXT
+);
+
+
+----------------------------------------------------
+-- AGENTS TABLE
+----------------------------------------------------
+
+CREATE TABLE Agents (
+    Thread_id UUID PRIMARY KEY,
+    Agent_name VARCHAR(255) NOT NULL,
+    Score DECIMAL(5,2),
+    Feedback TEXT,
+    Key_Points TEXT,
+
+    CONSTRAINT fk_agent_thread
+        FOREIGN KEY (Thread_id)
+        REFERENCES User_Data(Thread_id)
+        ON DELETE CASCADE
+);
+
+
+----------------------------------------------------
+-- DECISION TABLE
+----------------------------------------------------
+
+CREATE TABLE Decision (
+    Thread_id UUID PRIMARY KEY,
+    Confidence_Score DECIMAL(5,2),
+    Customer_Acceptance VARCHAR(255),
+    Recommend_Improvement TEXT,
+    Executive_Feedback TEXT,
+    Key_risks TEXT,
+    Overall_Decision TEXT,
+
+    CONSTRAINT fk_decision_thread
+        FOREIGN KEY (Thread_id)
+        REFERENCES User_Data(Thread_id)
+        ON DELETE CASCADE
+);
+
+
+-- THREAD NAME TABLE
+CREATE TABLE Thread_Name (
+    Thread_id UUID PRIMARY KEY,
+    Thread_name VARCHAR(255) NOT NULL,
+
+    CONSTRAINT fk_thread_name
+        FOREIGN KEY (Thread_id)
+        REFERENCES User_Data(Thread_id)
+        ON DELETE CASCADE
+);
+
+
+----------------------------------------------------
+-- INDEXES FOR FAST SEARCH
+----------------------------------------------------
+
+CREATE INDEX idx_user_thread
+ON User_Data(Thread_id);
+
+
+CREATE INDEX idx_agents_thread
+ON Agents(Thread_id);
+
+
+CREATE INDEX idx_decision_thread
+ON Decision(Thread_id);
+
+CREATE INDEX idx_thread_name_thread
+ON Thread_Name(Thread_id);

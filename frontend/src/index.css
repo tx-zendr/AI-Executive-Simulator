@@ -1,0 +1,56 @@
+@import url('https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+*{
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --bg-dark: #0a0118; 
+  --font-main: #fdf0f5; 
+  --font-muted: #a788b5; 
+  --glass-bg: rgba(22, 5, 45, 0.938);
+  --glass-bg2: rgba(22, 5, 45, 0.7); 
+  --glass-bg3: rgba(22, 5, 45, 0.77); 
+  --glass-bg4: rgba(22, 5, 45, 0.85); 
+  --glass-bg5: rgba(22, 5, 45, 0.93);
+  --glass-border: rgba(255, 0, 170, 0.2); 
+  --accent-primary: #ff00aa9d; 
+  --accent-secondary: #00d2ff; 
+  --accent-danger: #ff0044; 
+  --hypr-inactive: rgba(167, 136, 181, 0.2);
+  --hypr-active : #affac7;
+  --font-main: 'Space Mono', system-ui, sans-serif;
+  --font-mono: 'Space Mono', 'Fira Code', monospace;
+  
+  --hypr-active-gradient: linear-gradient(
+    45deg, 
+    #ff00aa,
+    #b200ff, 
+    #00d2ff 
+  );
+}
+
+body{
+  background-color: var(--bg-dark);
+  color: #e4e4e7;
+  font-family: var(--font-main);
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+}
+
+body::before {
+  content: "";
+  position: absolute;
+  top: -5%; 
+  left: -5%;
+  width: 110%;
+  height: 110%;
+  background-image: url("/bg1.jpg"); 
+  background-size: cover; 
+  background-position: center;
+  background-repeat: no-repeat;
+  filter: blur(4px);
+  z-index: -1;
+}

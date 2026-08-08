@@ -1,0 +1,60 @@
+.mainSide > div{
+    border: 1px solid var(--hypr-inactive);
+    transition: border-color 0.15s ease-in-out;
+}
+
+.mainSide > div:hover{
+    border: 1px solid #b2b2fe;
+    background-color: var(--glass-bg4);
+}
+
+.mainSide > textarea{
+    border: 1px solid var(--hypr-inactive);
+    transition: border-color 0.15s ease-in-out;
+}
+
+.mainSide > textarea:hover{
+    border: 1px solid #b2b2fe;
+    background-color: var(--glass-bg4);
+}
+
+.prDesc {
+    border: 1px solid var(--hypr-inactive);
+    flex: 1;
+    color: white;
+    background-color: var(--glass-bg3);
+    font-family: var(--font-main);
+    font-size: 28px;
+    padding: 15px;
+    border-radius: 6px;
+    resize: none;
+    outline: none;
+    overflow-y: auto; 
+    scrollbar-width: none; 
+}
+
+.prDesc::-webkit-scrollbar {
+    display: none;
+}
+
+.suggestion{
+    font-size: 20px;
+    color: rgba(255, 255, 255, 0.748);
+    border: 1px solid var(--hypr-inactive);
+    background-color: var(--glass-bg3);
+    padding: 15px;
+    border-radius: 6px;
+    resize: none;
+    outline: none;
+}
+
+.histSgg, .designMsg{
+    font-size: 20px;
+    color: rgba(255, 255, 255, 0.748);
+    border: 1px solid var(--hypr-inactive);
+    background-color: var(--glass-bg3);
+    padding: 15px;
+    border-radius: 6px;
+    resize: none;
+    outline: none;
+}
