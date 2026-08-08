@@ -16,7 +16,7 @@ api_key = os.getenv("GEMINI_API_KEY") or os.getenv("GOOGLE_API_KEY")
 client = genai.Client(api_key=api_key)
 
 # Recommended model
-MODEL_NAME = "gemini-2.5-flash"
+MODEL_NAME = "gemini-3.6-flash"
 
 # ---------------------------------------------------------------------------
 # Rate Limiter: 5 RPM → 1 call every 13 seconds (safe margin)
