@@ -1,7 +1,6 @@
 import os
 import uuid
 from fastapi import FastAPI, HTTPException
-import uvicorn
 from fastapi.middleware.cors import CORSMiddleware
 from typing import List
 from schemas import (
@@ -114,8 +113,8 @@ def simulate_idea(request: SimulationRequest):
 
         return SimulationResponse(
             thread_id=thread_id,
-            decision=decision,
-            agents=feedbacks
+            agents=feedbacks,
+            decision=decision
         )
     except Exception as e:
         raise HTTPException(
@@ -155,8 +154,7 @@ def list_threads():
         return [
             ThreadListEntry(
                 thread_id=t["thread_id"],
-                idea=t["idea"],
-                thread_name=t["thread_name"]
+                idea=t["idea"]
             )
             for t in threads
         ]
@@ -165,8 +163,3 @@ def list_threads():
             status_code=500,
             detail=f"Failed to retrieve thread list: {str(e)}"
         )
-
-
-# Inside main.py
-if __name__ == "__main__":
-    uvicorn.run("main:app", port=8000)
