@@ -1,5 +1,5 @@
 from pydantic import BaseModel, Field
-from typing import List, Optional, Any, TypedDict, Dict,Annotated
+from typing import List, Optional, Any, TypedDict, Dict
 
 class SimulationRequest(BaseModel):
     idea: str = Field(..., description="The product idea or feature request to evaluate.")
@@ -40,15 +40,15 @@ class SimulatorState(TypedDict):
 
 class SimulationResponse(BaseModel):
     thread_id: str
+    agents: List[AgentResponse]
     decision: DecisionResponse
-    agents:List[AgentResponse]
 
 class HistoryResponse(BaseModel):
     thread_id: str
     idea: str
     decision: DecisionResponse
+    agents: List[AgentResponse]
 
 class ThreadListEntry(BaseModel):
     thread_id: str
     idea: str
-    thread_name:Optional[str]
