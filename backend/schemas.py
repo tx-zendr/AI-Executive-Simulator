@@ -27,7 +27,6 @@ class DecisionResponse(BaseModel):
     recommended_improvements: List[str] = Field(..., description="Top recommended actionable improvements to address the feedback")
     confidence_score: int = Field(..., description="Confidence score in the final decision recommendation (0-100)", ge=0, le=100)
     individual_scores: StakeholderScores = Field(..., description="Raw scores from all stakeholder agents")
-    Idea_Name:str =Field(...,description="Final Idea Name For the Product")
 
 class SimulatorState(TypedDict):
     idea: str
