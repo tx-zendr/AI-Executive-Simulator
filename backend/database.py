@@ -101,24 +101,6 @@ def init_db():
                     ON DELETE CASCADE
             );
             """)
-            #4. Thread Name 
-            # Create Thread_Name table
-            cur.execute("""
-                CREATE TABLE IF NOT EXISTS Thread_Name (
-                Thread_id UUID PRIMARY KEY,
-                Thread_name VARCHAR(255) NOT NULL,
-                CONSTRAINT fk_thread_name
-                FOREIGN KEY (Thread_id)
-                REFERENCES User_Data(Thread_id)
-                ON DELETE CASCADE
-                );
-                """)
-            
-            # Index for fast thread-name lookup
-            cur.execute("""
-                CREATE INDEX IF NOT EXISTS idx_thread_name_thread
-                ON Thread_Name(Thread_id);
-            """)
 
             # Create Indexes
             cur.execute("CREATE INDEX IF NOT EXISTS idx_user_thread ON User_Data(Thread_id);")
@@ -191,17 +173,6 @@ def save_simulation_results(thread_id: str, idea: str, agents_feedback: List[Age
                     decision.overall_decision
                 )
             )
-            # 4. Upsert into Thread_Name
-            thread_name="NULL"
-            cur.execute(
-                """
-                INSERT INTO Thread_Name (Thread_id, Thread_name)
-                VALUES (%s, %s)
-                ON CONFLICT (Thread_id) DO UPDATE SET
-                    Thread_name = EXCLUDED.Thread_name;
-                """,
-                (thread_id, thread_name)
-            )
         conn.commit()
     except Exception as e:
         conn.rollback()
@@ -266,7 +237,7 @@ def get_simulation_history(thread_id: str) -> Optional[Dict[str, Any]]:
                 Customer=individual_scores.get("Customer", 50),
                 Competitor=individual_scores.get("Competitor", 50)
             )
-           
+
             decision_data = DecisionResponse(
                 overall_decision=decision_row.get("overall_decision") or "Revise",
                 executive_feedback=decision_row.get("executive_feedback") or "",
@@ -291,16 +262,7 @@ def get_all_threads() -> List[Dict[str, Any]]:
     conn = get_db_connection()
     try:
         with conn.cursor(cursor_factory=RealDictCursor) as cur:
-            cur.execute("""
-                SELECT
-                    u.Thread_id AS thread_id,
-                    t.Thread_name AS thread_name,
-                    u.Ideas AS idea
-                FROM User_Data u
-                LEFT JOIN Thread_Name t
-                    ON u.Thread_id = t.Thread_id
-                ORDER BY u.UID DESC
-            """)
+            cur.execute("SELECT Thread_id as thread_id, Ideas as idea FROM User_Data ORDER BY UID DESC")
             return [dict(row) for row in cur.fetchall()]
     finally:
         conn.close()
