@@ -192,7 +192,7 @@ def save_simulation_results(thread_id: str, idea: str, agents_feedback: List[Age
                 )
             )
             # 4. Upsert into Thread_Name
-            thread_name=decision.Idea_Name
+            thread_name="NULL"
             cur.execute(
                 """
                 INSERT INTO Thread_Name (Thread_id, Thread_name)
